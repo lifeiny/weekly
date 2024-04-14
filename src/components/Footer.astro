@@ -1,10 +1,10 @@
-<script type="text/javascript" src="https://gw.alipayobjects.com/os/k/h3/heti-addon.min.js"
-></script>
-<script type="text/javascript" src="https://gw.alipayobjects.com/os/k/3j/lozad.min.js"></script>
+<script type='text/javascript' src='https://gw.alipayobjects.com/os/k/h3/heti-addon.min.js'></script>
+<script type='text/javascript' src='https://gw.alipayobjects.com/os/k/3j/lozad.min.js'></script>
+<script type='text/javascript' src='https://gw.alipayobjects.com/os/k/y4/intense.min.js'></script>
 
 <!-- This is intentionally inlined to avoid FOUC -->
 <script is:inline>
-	document.addEventListener('DOMContentLoaded', function () {
+	document.addEventListener('astro:page-load', function () {
 		// Optimization of letter spacing
 		const heti = new Heti('.heti');
 		heti.autoSpacing();
@@ -25,11 +25,18 @@
 				links[i].target = '_blank';
 			}
 		}
+
+		const zoomImgs = document.querySelectorAll('#write img');
+		const isMobileDevice = /Android|iPhone/i.test(navigator.userAgent);
+		if (zoomImgs && zoomImgs.length > 0 && !isMobileDevice) {
+			Intense && Intense(zoomImgs);
+		}
 	});
+
 </script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DT01FBW30E" is:inline></script>
+<script async src='https://www.googletagmanager.com/gtag/js?id=G-DT01FBW30E' is:inline></script>
 <script>
 	// @ts-nocheck
 	window.dataLayer = window.dataLayer || [];
